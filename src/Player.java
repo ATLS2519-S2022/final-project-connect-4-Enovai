@@ -3,7 +3,7 @@
  * Connect4 player interface.  Any class implementing this interface can
  * by dynamically loaded into the game as a player.
  * 
- * @author Daniel Szafir
+ * @author Tina Wong
  *
  */
 public interface Player
@@ -13,7 +13,7 @@ public interface Player
      * 
      * @return A name for this player
      */
-    String name();
+    public String name();
 
   
     /**
@@ -25,8 +25,7 @@ public interface Player
      * @param rows the number of rows in the board
      * @param cols the number of columns in the board
      */
-    void init(int id, int msecPerMove, int rows, int cols);
-
+    public void init(int id, int msecPerMove, int rows, int cols);
     
     /**
      * Called by driver program to calculate the next move.
@@ -37,6 +36,7 @@ public interface Player
      * @param arb handles communication between game and player
      * @throws TimeUpException If the game determines the player has run out of time
      */
-    void calcMove(Connect4Board board, int oppMoveCol, Arbitrator arb) 
-        throws TimeUpException;
+    public void calcMove(Connect4Board board, int oppMoveCol, Arbitrator arb) 
+    		throws TimeUpException ;
+
 }
