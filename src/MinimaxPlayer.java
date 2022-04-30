@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class MinimaxPlayer implements Player {
 	int id; 
 	int opponent_id;
@@ -31,7 +33,6 @@ public class MinimaxPlayer implements Player {
         while(!arb.isTimeUp() && maxDepth <= board.numEmptyCells()) {
         	// do minimax search
         	// start the first level of minimax, set move as you're finding the bestScore
-        	
         
             arb.setMove(move);
             maxDepth++;
@@ -40,14 +41,26 @@ public class MinimaxPlayer implements Player {
     }
     
     public int minimax(Connect4Board board, int depth, boolean isMaximizing, Arbitrator arb) {
-    	
+    	int bestScore=0;
 //    	if depth = 0 or there's no moves left or time is up
 //    			return the heuristic value of node 
     	
     	if (depth == 0 || board.numEmptyCells() == 0 || arb.isTimeUp()) {
     		return score(board);
     	}
-    	
+    	if(isMaximizing==true)
+    	{
+    		bestScore=-1000;
+    		for(int cols=0;cols<board.numCols();cols++)
+    		{	
+    			if(board.isValidMove(cols)) {
+    				board.move(cols,id);		
+        			bestScore=Math.max(bestScore, minimax(board, depth - 1, false,arb));
+        			board.unmove(cols,id);
+    			}
+    		}
+    		return bestScore;
+    	}
 //    	if isMaximizing then
 //    			bestScore = -1000
 //    			for each possible next move do
@@ -55,7 +68,19 @@ public class MinimaxPlayer implements Player {
 //    				bestScore = Math.max(bestScore, minimax(child, depth - 1, FALSE)) 
 //    				board.unmove(...)
 //    			return bestScore
-    	
+    	else {
+    		bestScore=1000;
+    		for(int cols=0;cols<board.numCols();cols++)
+    		{
+    			if(board.isValidMove(cols))
+    			{
+    				board.move(cols, opponent_id);
+        			bestScore=Math.min(bestScore, minimax(board, depth - 1, true,arb));
+        			board.unmove(cols, opponent_id);
+    			}
+    		}
+    		return bestScore;
+    	}
     	
 //    	else /* minimizing player */ 
 //    			bestScore = 1000
@@ -64,8 +89,6 @@ public class MinimaxPlayer implements Player {
 //    				bestScore = Math.min(bestScore, minimax(child, depth - 1, TRUE)) 
 //					board.unmove(...)
 //    			return bestScore	
-    	
-    	return 0; // delete
     }
     
     // your score - opponent's score
