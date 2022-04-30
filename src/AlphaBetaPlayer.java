@@ -1,4 +1,16 @@
-
+/* *****************\************************************************************
+ *  Name:    Tina Wong
+ *           tiwo2906@colorado.edu
+ *
+ *  Description:  A program that uses minimax AI with alpha-beta pruning 
+ *
+ *  Written:      4/29/22 
+ *  
+ *
+ *  Credits:
+ *   Ruojia Sun
+ *
+ **************************************************************************** */
 public class AlphaBetaPlayer implements Player{
 	int id; 
 	int opponent_id;
@@ -118,9 +130,9 @@ public class AlphaBetaPlayer implements Player{
     		for(int cols=0;cols<board.numCols();cols++)
     		{	
     			if(board.isValidMove(cols)) {
-    				board.move(cols,id);		
+    				board.move(cols,opponent_id);		
         			value=Math.min(value, alphabeta(board, depth - 1, alpha,beta,true,arb));
-        			board.unmove(cols,id);
+        			board.unmove(cols,opponent_id);
         			beta=Math.min(beta,value);
         			if(alpha>=beta)
         			{

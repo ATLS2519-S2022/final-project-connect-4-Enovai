@@ -1,3 +1,16 @@
+/* *****************\************************************************************
+ *  Name:    Tina Wong
+ *           tiwo2906@colorado.edu
+ *
+ *  Description:  A greedy 'AI' program that plays as an AI for the next possible move
+ *
+ *  Written:      4/29/22 
+ *  
+ *
+ *  Credits:
+ *   Ruojia Sun - TA
+ *
+ **************************************************************************** */
 public class GreedyPlayer implements Player
 {
    

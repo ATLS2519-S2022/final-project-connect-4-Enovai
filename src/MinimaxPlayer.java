@@ -1,3 +1,16 @@
+/* *****************\************************************************************
+ *  Name:    Tina Wong
+ *           tiwo2906@colorado.edu
+ *
+ *  Description:  A program that uses the minimax algorithm to play the next move of the AI
+ *
+ *  Written:      4/29/22 
+ *  
+ *
+ *  Credits:
+ *   Ruojia Sun - TA
+ *
+ **************************************************************************** */
 import java.util.ArrayList;
 
 public class MinimaxPlayer implements Player {
