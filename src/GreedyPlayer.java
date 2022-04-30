@@ -4,17 +4,39 @@ public class GreedyPlayer implements Player
     int id; 
     int cols; 
     
+    /**
+     * Return the name of this player.
+     * 
+     * @return A name for this player
+     */
     @Override
     public String name() {
         return "Greedy Boi";
     }
-
+    /**
+     * Initialize the player. The game calls this method once,
+     * before any calls to calcMove().
+     * 
+     * @param id integer identifier for the player (can get opponent's id via 3-id);
+     * @param msecPerMove time allowed for each move
+     * @param rows the number of rows in the board
+     * @param cols the number of columns in the board
+     */
     @Override
     public void init(int id, int msecPerMove, int rows, int cols) {
     	this.id = id; //id is your player's id, opponent's id is 3-id
     	this.cols = cols;
     }
-
+    /**
+     * Called by driver program to calculate the next move.
+     *  
+     * @param board current connect 4 board
+     * @param oppMoveCol column of opponent's most recent move; -1 if this is the first move 
+     * 		  of the game; note that the board may not be empty on the first move of the game!
+     * @param arb handles communication between game and player
+     * @throws TimeUpException If the game determines the player has run out of time 
+     * @throws Error: The board is full! if the game determines that there is no room to move
+     */
     @Override
     public void calcMove(Connect4Board board, int oppMoveCol, Arbitrator arb) 
         throws TimeUpException {
