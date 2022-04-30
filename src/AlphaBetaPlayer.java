@@ -109,7 +109,7 @@ public class AlphaBetaPlayer implements Player{
 			value = min(value, alphabeta(child, depth − 1, α, β, TRUE)) 
 			β = min(β, value)
 			if α ≥ β then
-			break 
+			break  
 			return value
      */
     	else
